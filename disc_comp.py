@@ -6,6 +6,11 @@ Additionall it can use either metric or imperial units for the plots and sliders
 
 This script developed by Chris Egan in support of Trash Panda Disc Golf
 chris.egan@ceganconsulting.com
+
+
+Open Items to correct:
+ - the coefficent plots need dynamic scaling for some plots
+ - check roll rates, seem high
 """
 
 from shotshaper.projectile import DiscGolfDisc
@@ -75,8 +80,12 @@ roll = 1.0
 yaw = 0
 adjust_axes = False
 
+#conversion factors for imperial units
 m2ft_factor = 3.28084 if unit_system == 'imperial' else 1
 mph_factor = 2.23694 if unit_system == 'imperial' else 1
+N2ozf_factor = 3.59694 if unit_system == 'imperial' else 1
+Nm2inlb_factor = 8.85075 if unit_system == 'imperial' else 1
+rad2deg_factor = 57.2958 if unit_system == 'imperial' else 1
 
 #Array to hold disc objects
 discs = []
@@ -241,15 +250,12 @@ lines_arc = []
 
 
 for i, (post_array, velocities) in enumerate(zip(post_arrays, velocity_arrays)):
-    if unit_system == 'imperial':
-        arc = post_array[0] * 3.28084
-    if unit_system == 'metric':
-        arc = post_array[0]
-    lifts = post_array[3]
-    drags = post_array[4]
-    moms = post_array[5]
+    arc = post_array[0] * m2ft_factor
+    lifts = post_array[3] * N2ozf_factor
+    drags = post_array[4] * N2ozf_factor
+    moms = post_array[5] * Nm2inlb_factor
     alphas = post_array[1]
-    rolls = post_array[6]
+    rolls = post_array[6] * rad2deg_factor
     betas = post_array[2]
     
     velocities_u = velocities[0, :]  # Assuming the first row is 'u' velocities
@@ -282,18 +288,18 @@ for ax in axes.flat:
 # Set labels and legends
 if unit_system == 'imperial':  # Fix units and conversions, not complete
     axes[0, 0].set_xlabel('Distance (ft)')
-    axes[0, 0].set_ylabel('Lift force (N)')
+    axes[0, 0].set_ylabel('Lift force (ozf)')
     axes[0, 1].set_xlabel('Distance (ft)')
-    axes[0, 1].set_ylabel('Drag force (N)')
+    axes[0, 1].set_ylabel('Drag force (ozf)')
     axes[0, 2].set_xlabel('Distance (ft)')
-    axes[0, 2].set_ylabel('Moment (Nm)')
+    axes[0, 2].set_ylabel('Moment (in-lb)')
     axes[1, 0].set_xlabel('Distance (ft)')
     axes[1, 0].set_ylabel('Angle of attack (deg)')
     axes[1, 1].set_xlabel('Distance (ft)')
-    axes[1, 1].set_ylabel('Velocities (m/s)')
+    axes[1, 1].set_ylabel('Velocities (mph)')
     axes[1, 1].legend()
     axes[1, 2].set_xlabel('Distance (ft)')
-    axes[1, 2].set_ylabel('Roll rate (rad/s)')
+    axes[1, 2].set_ylabel('Roll rate (deg/s)')
     
 if unit_system == 'metric':
     axes[0, 0].set_xlabel('Distance (m)')
@@ -358,15 +364,12 @@ def update(x):
         
   
     for i, (post_array, velocities) in enumerate(zip(post_arrays, velocity_arrays)):
-        if unit_system == 'imperial':
-            arc = post_array[0] * 3.28084
-        if unit_system == 'metric':
-            arc = post_array[0]
-        lifts = post_array[3]
-        drags = post_array[4]
-        moms = post_array[5]
+        arc = post_array[0] * m2ft_factor
+        lifts = post_array[3] * N2ozf_factor
+        drags = post_array[4] * N2ozf_factor
+        moms = post_array[5] * Nm2inlb_factor
         alphas = post_array[1]
-        rolls = post_array[6]
+        rolls = post_array[6] * rad2deg_factor
         betas = post_array[2]
         
         velocities_u = velocities[0, :]  # Assuming the first row is 'u' velocities
