@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# disc files
+shotshaper/discs/*
+!shotshaper/discs/cd1.stl
+!shotshaper/discs/cd1.yaml
+!shotshaper/discs/cd5.stl
+!shotshaper/discs/cd5.yaml
+!shotshaper/discs/dd2.stl
+!shotshaper/discs/dd2.yaml
+!shotshaper/discs/fd2.stl
+!shotshaper/discs/fd2.yaml
