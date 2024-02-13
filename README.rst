@@ -1,6 +1,17 @@
 shotshaper
 ======
 
+Changes in this fork
+--------------------
+This version of shotshaper adds a launcher GUI and a script to compare multiple discs.
+The new script is named disc_comp.py and can be used to plot multiple discs at once.
+The GUI is a simple launcher allowing the user to pick the discs to compare and then
+launch the disc_comp.py script with the selected discs.
+
+The GUI may be later updated to allow the original scripts to be used as well.
+
+Install as described in the original README and then run the GUI with python shotshaper_launcher.py
+
 Introduction
 ------------
 
