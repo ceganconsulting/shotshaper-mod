@@ -76,6 +76,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipyb
 
 # IPython
 profile_default/
@@ -127,6 +128,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+*.code-workspace
 
 # disc files
 shotshaper/discs/*

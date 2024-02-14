@@ -13,6 +13,22 @@ from matplotlib.widgets import Slider, Button, TextBox
 import numpy as np
 from shotshaper.transforms import T_21
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import argparse
+
+#create Parser
+parser = argparse.ArgumentParser(description="Launch Shotshaper with specified disc data file and units.")
+
+# Add an argument for unit selection with default value 'imperial'
+parser.add_argument('--units', type=str, default='metric', choices=['metric', 'imperial'],
+                    help='Unit system to use (metric or imperial). Default is metric. All calculations are done in metric and converted if desired.')
+
+# Modify the argument for disc data file to expect a single disc name
+parser.add_argument('disc', help='Name of the disc data file.')
+
+# Parse the arguments
+args = parser.parse_args()
+
+name = args.disc
 
 def disc_vertices(attitude):
     a,nt = attitude.shape
@@ -30,7 +46,7 @@ def disc_vertices(attitude):
     
     return d
 
-name = 'cd5'
+#name = 'cd5'
 mass = 0.175
 
 d = DiscGolfDisc(name, mass=mass)
@@ -43,7 +59,7 @@ nose = 0.0
 roll = 15.0  
 yaw = 0
 adjust_axes = False
-     
+
 s = d.shoot(speed=speed, omega=omega, pitch=pitch, position=pos, nose_angle=nose, roll_angle=roll,yaw=yaw)
 
 x,y,z = s.position

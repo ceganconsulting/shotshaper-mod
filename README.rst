@@ -3,14 +3,26 @@ shotshaper
 
 Changes in this fork
 --------------------
-This version of shotshaper adds a launcher GUI and a script to compare multiple discs.
-The new script is named disc_comp.py and can be used to plot multiple discs at once.
-The GUI is a simple launcher allowing the user to pick the discs to compare and then
-launch the disc_comp.py script with the selected discs.
+This version of shotshaper adds a launcher GUI allowing for easier launching of
+various scripts, and adds some new scripts. 
 
-The GUI may be later updated to allow the original scripts to be used as well.
+The GUI allows for selecting Metric or Imperial units, and for selecting the 
+discs to be sent to each script. 
+
+disc_comp.py is a new script that allows comparing multiple discs to eachother.
+Up to 6 discs can be selected in the GUI and plotted together. This shows the 
+same plots from the disc_gui2d.py script along with the more granular plots from
+disc_golf_throw.py. 
+
+coeffs.py is a new script that allows for viewing and comparing the coefficients 
+of up to 6 discs. 
 
 Install as described in the original README and then run the GUI with python shotshaper_launcher.py
+
+UNFINISHED:
+The unit switching isn't fully implemented yet. Some conversions are not being done 
+correctly. This is being worked on. disc_gui2d.py has not been updatd to use both
+units at all yet. 
 
 Introduction
 ------------

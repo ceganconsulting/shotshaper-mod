@@ -1,16 +1,16 @@
 """
 This script has been developed to allow the comparison of different discs using examples from the shotshaper package.
-It combines the origional disc_gui2d.py and disc_golf_throw.py script from the examples folder.
+It combines the original disc_gui2d.py and disc_golf_throw.py script from the examples folder.
 It has been modified to allow multiple disc throws to be overlaid and compare the results. 
-Additionall it can use either metric or imperial units for the plots and sliders.
+Additional it can use either metric or imperial units for the plots and sliders.
 
 This script developed by Chris Egan in support of Trash Panda Disc Golf
 chris.egan@ceganconsulting.com
 
 
 Open Items to correct:
- - the coefficent plots need dynamic scaling for some plots
- - check roll rates, seem high
+ - the coefficient plots need dynamic scaling for some plots
+ - unit conversion is not working yet everywhere. 
 """
 
 from shotshaper.projectile import DiscGolfDisc
